@@ -1,6 +1,8 @@
 package com.insurance.service;
 
+import com.insurance.dto.ClaimDTO;
 import com.insurance.dto.PolicyDTO;
+import com.insurance.entity.Claim;
 import com.insurance.entity.Customer;
 import com.insurance.entity.Policy;
 import com.insurance.exception.ResourceNotFoundException;
@@ -42,13 +44,20 @@ public class PolicyService {
         return convertPolicyToDTO(savedPolicy);
     }
 
-    private PolicyDTO convertPolicyToDTO(Policy policy) {
+    public PolicyDTO convertPolicyToDTO(Policy policy) {
 
         PolicyDTO dto = new PolicyDTO();
 
         dto.setPolicyId(policy.getPolicyId());
         dto.setPolicyName(policy.getPolicyName());
         dto.setPremiumAmount(policy.getPremiumAmount());
+
+        dto.setClaims(
+                policy.getClaims()
+                        .stream()
+                        .map(this::convertClaimToDTO)
+                        .toList()
+        );
 
         return dto;
     }
@@ -66,5 +75,17 @@ public class PolicyService {
                 .stream()
                 .map(this::convertPolicyToDTO)
                 .toList();
+    }
+
+    public ClaimDTO convertClaimToDTO(Claim claim) {
+
+        ClaimDTO dto = new ClaimDTO();
+
+        dto.setClaimId(claim.getClaimId());
+        dto.setClaimReason(claim.getClaimReason());
+        dto.setClaimAmount(claim.getClaimAmount());
+        dto.setStatus(claim.getStatus());
+
+        return dto;
     }
 }

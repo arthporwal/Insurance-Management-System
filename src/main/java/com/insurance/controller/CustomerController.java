@@ -25,8 +25,13 @@ public class CustomerController {
         return customerService.saveCustomer(customer);
     }
 
+//    @GetMapping
+//    public List<Customer> getAllCustomers() {
+//        return customerService.getAllCustomers();
+//    }
+
     @GetMapping
-    public List<Customer> getAllCustomers() {
+    public List<CustomerDTO> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 

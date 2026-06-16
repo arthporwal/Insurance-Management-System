@@ -2,6 +2,8 @@ package com.insurance.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class PolicyDTO {
@@ -10,4 +12,6 @@ public class PolicyDTO {
     private String policyName;
 
     private Double premiumAmount;
+
+    private List<ClaimDTO> claims;
 }

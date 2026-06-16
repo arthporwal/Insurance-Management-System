@@ -22,9 +22,16 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
-    }
+//    public List<Customer> getAllCustomers() {
+//        return customerRepository.findAll();
+//    }
+public List<CustomerDTO> getAllCustomers() {
+
+    return customerRepository.findAll()
+            .stream()
+            .map(this::convertToDTO)
+            .toList();
+}
 
     public CustomerDTO getCustomerById(Long id) {
 
