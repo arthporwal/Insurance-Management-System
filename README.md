@@ -1,7 +1,3 @@
-<!--
-Before committing: check the [ ] items below against your actual code (API paths, DB name,
-Java version) since I don't have access to your source — everything else is filled from your resume.
--->
 
 # Insurance Management System
 
@@ -73,4 +69,3 @@ src/main/java/
 ├── repository/    # JPA repositories
 ├── model/         # Entity classes (Customer, Policy, Claim)
 ```
-*(Adjust to match your actual package structure)*
